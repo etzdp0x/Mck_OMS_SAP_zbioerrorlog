@@ -1,0 +1,156 @@
+{
+  "_version": "1.60.0",
+  "sap.app": {
+    "id": "com.mkc.zfi.zbioerrorlog",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.31.1",
+      "toolsId": "113cfc12-0cf4-4a12-a92f-a4c8fbcc8fe7"
+    },
+    "dataSources": {
+      "annotation": {
+        "type": "ODataAnnotation",
+        "uri": "annotations/annotation.xml",
+        "settings": {
+          "localUri": "annotations/annotation.xml"
+        }
+      },
+      "mainService": {
+        "uri": "/sap/opu/odata4/sap/zfi_sb_cpr_errorlog/srvd/sap/zfi_sd_cpr_errorlog/0001/",
+        "type": "OData",
+        "settings": {
+          "annotations": [
+            "annotation"
+          ],
+          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "4.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.120.30",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.mkc.zfi.zbioerrorlog.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "ZCDS_CV_FI_CPR_ERRORLOGList",
+          "target": "ZCDS_CV_FI_CPR_ERRORLOGList"
+        },
+        {
+          "pattern": "ZCDS_CV_FI_CPR_ERRORLOG({key}):?query:",
+          "name": "ZCDS_CV_FI_CPR_ERRORLOGObjectPage",
+          "target": "ZCDS_CV_FI_CPR_ERRORLOGObjectPage"
+        }
+      ],
+      "targets": {
+        "ZCDS_CV_FI_CPR_ERRORLOGList": {
+          "type": "Component",
+          "id": "ZCDS_CV_FI_CPR_ERRORLOGList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/ZCDS_CV_FI_CPR_ERRORLOG",
+              "variantManagement": "Page",
+              "navigation": {
+                "ZCDS_CV_FI_CPR_ERRORLOG": {
+                  "detail": {
+                    "route": "ZCDS_CV_FI_CPR_ERRORLOGObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "ZCDS_CV_FI_CPR_ERRORLOGObjectPage": {
+          "type": "Component",
+          "id": "ZCDS_CV_FI_CPR_ERRORLOGObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/ZCDS_CV_FI_CPR_ERRORLOG"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}
